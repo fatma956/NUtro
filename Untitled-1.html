@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrifit Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+        .options, .vitamin-results, .vitamin-details, .qr-scanner, .tomato-info, .smart-scanner, .nutritional-info {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .options button, .vitamin-results button, .vitamin-details button, .qr-scanner button, .tomato-info button, .smart-scanner button, .nutritional-info button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .options button:hover, .vitamin-results button:hover, .vitamin-details button:hover, .qr-scanner button:hover, .tomato-info button:hover, .smart-scanner button:hover, .nutritional-info button:hover {
+            background-color: #0056b3;
+        }
+        .vitamin-details div, .tomato-info div, .smart-scanner div, .nutritional-info div {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            width: 100%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h1>Nutrifit</h1>
+        <input type="text" placeholder="Username" id="username" required>
+        <input type="email" placeholder="Email" id="email" required>
+        <button onclick="showOptions()">Continue</button>
+    </div>
+    <div class="container options" id="options-container">
+        <h1>Welcome to Nutrifit</h1>
+        <button onclick="showVitaminResults()">Option 1</button>
+        <button onclick="showVitaminResults()">Option 2</button>
+        <button onclick="showVitaminResults()">Option 3</button>
+        <button onclick="showVitaminResults()">Option 4</button>
+        <button onclick="showVitaminResults()">Option 5</button>
+        <button onclick="showVitaminResults()">Option 6</button>
+    </div>
+    <div class="container vitamin-results" id="vitamin-results-container">
+        <h1>Enter Your Check-Up Results</h1>
+        <input type="text" placeholder="Vitamin A" required>
+        <input type="text" placeholder="Vitamin B12" required>
+        <input type="text" placeholder="Vitamin C" required>
+        <input type="text" placeholder="Vitamin D" required>
+        <input type="text" placeholder="Vitamin E" required>
+        <button onclick="showVitaminDetails()">Submit</button>
+    </div>
+    <div class="container vitamin-details" id="vitamin-details-container">
+        <h1>You Have Vitamin C Deficiency</h1>
+        <div>Here are some foods rich in Vitamin C:</div>
+        <div>1. Oranges</div>
+        <div>2. Tomatoes</div>
+        <div>3. Spinach</div>
+        <div>4. Potatoes</div>
+        <button onclick="showQRScanner()">Scan QR Code</button>
+    </div>
+    <div class="container qr-scanner" id="qr-scanner-container">
+        <h1>QR Code Scanner</h1>
+        <p>Scan Now</p>
+        <!-- Placeholder for QR code scanner -->
+        <button onclick="showTomatoInfo()">Scan</button>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    <div class="container tomato-info" id="tomato-info-container">
+        <h1>Tomatoes</h1>
+        <div>Vitamin C: 23mg per 100g</div>
+        <div>Vitamin K: 7.9µg per 100g</div>
+        <div>Vitamin A: 833 IU per 100g</div>
+        <div>Fiber: 1.2g per 100g</div>
+        <button onclick="showSmartScanner()">Use Smart Scanner</button>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    <div class="container smart-scanner" id="smart-scanner-container">
+        <h1>Smart Scanner</h1>
+        <p>Scanning Tomatoes...</p>
+        <!-- Placeholder for smart scanner -->
+        <div>Tomato Analysis: Fresh and Rich in Nutrients</div>
+        <button onclick="showNutritionalInfo()">View Nutritional Info</button>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    <div class="container nutritional-info" id="nutritional-info-container">
+        <h1>Nutritional Info</h1>
+        <div>Calories: 18 kcal per 100g</div>
+        <div>Protein: 0.9g per 100g</div>
+        <div>Carbs: 3.9g per 100g</div>
+        <div>Fats: 0.2g per 100g</div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        function showOptions() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('options-container').style.display = 'flex';
+        }
+
+        function showVitaminResults() {
+            document.getElementById('options-container').style.display = 'none';
+            document.getElementById('vitamin-results-container').style.display = 'flex';
+        }
+
+        function showVitaminDetails() {
+            document.getElementById('vitamin-results-container').style.display = 'none';
+            document.getElementById('vitamin-details-container').style.display = 'flex';
+        }
+
+        function showQRScanner() {
+            document.getElementById('vitamin-details-container').style.display = 'none';
+            document.getElementById('qr-scanner-container').style.display = 'flex';
+        }
+
+        function showTomatoInfo() {
+            document.getElementById('qr-scanner-container').style.display = 'none';
+            document.getElementById('tomato-info-container').style.display = 'flex';
+        }
+
+        function showSmartScanner() {
+            document.getElementById('tomato-info-container').style.display = 'none';
+            document.getElementById('smart-scanner-container').style.display = 'flex';
+        }
+
+        function showNutritionalInfo() {
+            document.getElementById('smart-scanner-container').style.display = 'none';
+            document.getElementById('nutritional-info-container').style.display = 'flex';
+        }
+
+        function goBack() {
+            document.getElementById('nutritional-info-container').style.display = 'none';
+            document.getElementById('options-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
